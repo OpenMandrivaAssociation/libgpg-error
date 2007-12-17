@@ -11,7 +11,6 @@ Release:	%{release}
 License:	LGPL
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
-Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
