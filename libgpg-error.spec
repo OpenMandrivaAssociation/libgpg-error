@@ -1,4 +1,4 @@
-%define	version 1.4
+%define	version 1.6
 %define release %mkrel 1
 
 %define major 0
