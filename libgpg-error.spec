@@ -12,10 +12,10 @@ Release:	%{release}
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
-Buildroot:	%{_tmppath}/%{name}-%{version}-root
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	%{SOURCE0}.sig
 Patch0:		libgpg-error-1.0-libdir.patch
+Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 This is a library that defines common error values for all GnuPG
@@ -64,6 +64,8 @@ make check
 rm -rf %{buildroot}
 %makeinstall_std
 
+%multiarch_binaries %{buildroot}%{_bindir}/gpg-error-config
+
 %find_lang %{name}
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -81,6 +83,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README
 %{_bindir}/*
+%{multiarch_bindir}/gpg-error-config
 %{_datadir}/aclocal/*.m4
 %{_libdir}/lib*.so
 %{_libdir}/lib*.a
