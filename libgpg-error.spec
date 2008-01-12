@@ -3,18 +3,18 @@
 
 %define major 0
 %define libname %mklibname gpg-error %{major}
+%define develname %mklibname gpg-error -d
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	%{version}
 Release:	%{release}
-License:	LGPL
+License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
-
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
-Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
+Source1:	%{SOURCE0}.sig
 Patch0:		libgpg-error-1.0-libdir.patch
 
 %description
@@ -23,23 +23,25 @@ components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
 
 
-%package	-n %{libname}
+%package -n %{libname}
 Summary:	Library containing common error values for GnuPG components
 Group:		System/Libraries
-Provides:	%{name} = %{version}
+Provides:	%{name} = %{version}-%{release}
 
-%description	-n %{libname}
+%description -n %{libname}
 This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
 
-%package	-n %{libname}-devel
+%package -n %{develname}
 Summary:	Development related files of %{name}
 Group:		Development/Other
 Provides:	%{name}-devel = %{version}-%{release}
-Requires:	%{libname} = %{version}
+Requires:	%{libname} = %{version}-%{release}
+Obsoletes:	%mklibname gpg-error 0 -d
+Provides:	%mklibname gpg-error 0 -d
 
-%description	-n %{libname}-devel
+%description -n %{develname}
 %{name} is a library that defines common error values for all
 GnuPG components.  Among these are GPG, GPGSM, GPGME, GPG-Agent,
 libgcrypt, pinentry, SmartCard Daemon and possibly more in the future.
@@ -54,6 +56,8 @@ or compile applications that use %{name}.
 %build
 %configure2_5x
 %make
+
+%check
 make check
 
 %install
@@ -71,10 +75,9 @@ rm -rf %{buildroot}
 
 %files -n %{libname} -f %{name}.lang
 %defattr(-,root,root)
-%doc COPYING COPYING.LIB
-%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README
 %{_bindir}/*
@@ -84,6 +87,3 @@ rm -rf %{buildroot}
 %{_libdir}/lib*.la
 %{_includedir}/*
 %{_datadir}/common-lisp/source/gpg-error
-
-
-
