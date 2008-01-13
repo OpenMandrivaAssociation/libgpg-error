@@ -1,5 +1,5 @@
 %define	version 1.6
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 0
 %define libname %mklibname gpg-error %{major}
@@ -22,11 +22,20 @@ This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
 
+%package common
+Summary:	Common files for libgpg-error
+Group:		System/Libraries
+Conflicts:	libgpg-error < 1.6-2
+
+%description common
+This package contains the common files that are used by the
+libgpg-error library.
 
 %package -n %{libname}
 Summary:	Library containing common error values for GnuPG components
 Group:		System/Libraries
 Provides:	%{name} = %{version}-%{release}
+Requires:	%{name}-common >= %{version}-%{release}
 
 %description -n %{libname}
 This is a library that defines common error values for all GnuPG
@@ -74,8 +83,10 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
+%files common -f %{name}.lang
+%defattr(-,root,root)
 
-%files -n %{libname} -f %{name}.lang
+%files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/lib*.so.%{major}*
 
