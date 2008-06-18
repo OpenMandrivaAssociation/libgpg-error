@@ -1,5 +1,5 @@
 %define	version 1.6
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define major 0
 %define libname %mklibname gpg-error %{major}
