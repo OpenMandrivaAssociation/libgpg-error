@@ -1,5 +1,5 @@
-%define	version 1.6
-%define release %mkrel 4
+%define	version 1.7
+%define release %mkrel 1
 
 %define major 0
 %define libname %mklibname gpg-error %{major}
@@ -25,7 +25,7 @@ pinentry, SmartCard Daemon and possibly more in the future.
 %package common
 Summary:	Common files for libgpg-error
 Group:		System/Libraries
-Conflicts:	libgpg-error < 1.6-2
+Conflicts:	libgpg-error < 1.7
 
 %description common
 This package contains the common files that are used by the
