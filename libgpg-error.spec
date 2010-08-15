@@ -1,5 +1,5 @@
-%define	version 1.7
-%define release %mkrel 2
+%define	version 1.9
+%define release %mkrel 1
 
 %define major 0
 %define libname %mklibname gpg-error %{major}
@@ -14,7 +14,7 @@ Group:		System/Libraries
 URL:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	%{SOURCE0}.sig
-Patch0:		libgpg-error-1.0-libdir.patch
+Patch0:		libgpg-error-1.9-libdir.patch
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -48,7 +48,6 @@ Group:		Development/Other
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	%mklibname gpg-error 0 -d
-Provides:	%mklibname gpg-error 0 -d
 
 %description -n %{develname}
 %{name} is a library that defines common error values for all
@@ -60,7 +59,7 @@ or compile applications that use %{name}.
 
 %prep
 %setup -q
-%patch0 -p1 -b .libdir
+%patch0 -p0 -b .libdir
 
 %build
 %configure2_5x
@@ -101,7 +100,6 @@ rm -rf %{buildroot}
 %{multiarch_bindir}/gpg-error-config
 %{_datadir}/aclocal/*.m4
 %{_libdir}/lib*.so
-%{_libdir}/lib*.a
 %{_libdir}/lib*.la
 %{_includedir}/*
 %{_datadir}/common-lisp/source/gpg-error
