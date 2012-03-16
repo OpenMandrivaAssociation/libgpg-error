@@ -83,8 +83,9 @@ rm -f %{buildroot}%{_libdir}/lib*.la
 %files -n %{develname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README
-%{_bindir}/*
 %{multiarch_bindir}/gpg-error-config
+%{_bindir}/gpg-error
+%{_bindir}/gpg-error-config
 %{_datadir}/aclocal/*.m4
 %{_libdir}/lib*.so
 %{_includedir}/*
