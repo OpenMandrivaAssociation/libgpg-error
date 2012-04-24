@@ -66,7 +66,6 @@ or compile applications that use %{name}.
 make check
 
 %install
-
 %makeinstall_std
 
 %multiarch_binaries %{buildroot}%{_bindir}/gpg-error-config
@@ -81,7 +80,6 @@ rm -f %{buildroot}%{_libdir}/lib*.la
 %{_libdir}/lib*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README
 %{multiarch_bindir}/gpg-error-config
 %{_bindir}/gpg-error
@@ -90,3 +88,4 @@ rm -f %{buildroot}%{_libdir}/lib*.la
 %{_libdir}/lib*.so
 %{_includedir}/*
 %{_datadir}/common-lisp/source/gpg-error
+
