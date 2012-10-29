@@ -37,7 +37,6 @@ libgpg-error library.
 %package -n	%{libname}
 Summary:	Library containing common error values for GnuPG components
 Group:		System/Libraries
-Provides:	%{name} = %{version}-%{release}
 Requires:	%{name}-common >= %{version}-%{release}
 
 %description -n	%{libname}
