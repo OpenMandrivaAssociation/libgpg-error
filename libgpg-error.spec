@@ -100,11 +100,19 @@ make -C system check
 %install
 %if %{with uclibc}
 %makeinstall_std -C uclibc
+mkdir -p %{buildroot}%{uclibc_root}/%{_lib}
+mv %{buildroot}%{uclibc_root}%{_libdir}/libgpg-error.so.%{major}* %{buildroot}%{uclibc_root}/%{_lib}
+ln -srf %{buildroot}%{uclibc_root}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{uclibc_root}%{_libdir}/libgpg-error.so
+
 rm -r %{buildroot}%{uclibc_root}%{_libdir}/pkgconfig
 rm -r %{buildroot}%{uclibc_root}%{_bindir}
 %endif
 
 %makeinstall_std -C system
+
+mkdir -p %{buildroot}/%{_lib}
+mv %{buildroot}%{_libdir}/libgpg-error.so.%{major}* %{buildroot}/%{_lib}
+ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}/libgpg-error.so
 
 %multiarch_binaries %{buildroot}%{_bindir}/gpg-error-config
 
@@ -113,11 +121,11 @@ rm -r %{buildroot}%{uclibc_root}%{_bindir}
 %files common -f %{name}.lang
 
 %files -n %{libname}
-%{_libdir}/libgpg-error.so.%{major}*
+/%{_lib}/libgpg-error.so.%{major}*
 
 %if %{with uclibc}
 %files -n uclibc-%{libname}
-%{uclibc_root}%{_libdir}/libgpg-error.so.%{major}*
+%{uclibc_root}/%{_lib}/libgpg-error.so.%{major}*
 %endif
 
 %files -n %{devname}
