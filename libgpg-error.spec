@@ -12,6 +12,7 @@ URL:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	%{SOURCE0}.sig
 Patch0:		libgpg-error-1.9-libdir.patch
+Patch1:		libgpg-error-1.10-pkgconfig.patch
 
 %description
 This is a library that defines common error values for all GnuPG
@@ -56,6 +57,8 @@ or compile applications that use %{name}.
 %prep
 %setup -q
 %patch0 -p0 -b .libdir~
+%patch1 -p1 -b .pkgconf~
+autoreconf -f
 
 %build
 %configure2_5x
@@ -83,5 +86,6 @@ make check
 %{_bindir}/gpg-error-config
 %{_datadir}/aclocal/gpg-error.m4
 %{_libdir}/libgpg-error.so
+%{_libdir}/pkgconfig/gpg-error.pc
 %{_includedir}/gpg-error.h
 %{_datadir}/common-lisp/source/gpg-error
