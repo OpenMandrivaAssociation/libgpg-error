@@ -22,6 +22,7 @@ pinentry, SmartCard Daemon and possibly more in the future.
 %package	common
 Summary:	Common files for libgpg-error
 Group:		System/Libraries
+BuildArch:	noarch
 Conflicts:	libgpg-error < 1.7
 
 %description	common
