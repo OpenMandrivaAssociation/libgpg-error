@@ -12,7 +12,8 @@ License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
-Source1:	%{SOURCE0}.sig
+# comment out to workaround abf issue
+#Source1:	%{SOURCE0}.sig
 Patch0:		libgpg-error-1.9-libdir.patch
 Patch1:		libgpg-error-1.10-pkgconfig.patch
 %if %{with uclibc}
