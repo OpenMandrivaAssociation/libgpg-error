@@ -7,7 +7,7 @@
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	1.10
-Release:	4
+Release:	5
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
@@ -142,6 +142,9 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %{_datadir}/common-lisp/source/gpg-error
 
 %changelog
+* Wed Dec 12 2012 Per Øyvind Karlesn <peroyvind@mandriva.org> 1.10-5
+- rebuild on ABF
+
 * Mon Oct 29 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.10-4
 + Revision: 820314
 - drop bogus provides
