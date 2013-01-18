@@ -76,9 +76,11 @@ or compile applications that use %{name}.
 %setup -q
 %patch0 -p0 -b .libdir~
 %patch1 -p1 -b .pkgconf~
-autoreconf -f
 
 %build
+#fix build with new automake
+sed -i -e 's,AM_PROG_MKDIR_P,AC_PROG_MKDIR_P,g' configure.*
+autoreconf -fi
 CONFIGURE_TOP="$PWD"
 %if %{with uclibc}
 mkdir -p uclibc
