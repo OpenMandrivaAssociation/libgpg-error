@@ -1,5 +1,5 @@
---- src/gpg-error-config.in.libdir	2010-01-14 10:18:30.000000000 +0100
-+++ src/gpg-error-config.in	2010-08-15 17:50:02.000000000 +0200
+--- ./src/gpg-error-config.in.libdir	2010-01-14 10:18:30.000000000 +0100
++++ ./src/gpg-error-config.in	2010-08-15 17:50:02.000000000 +0200
 @@ -13,7 +13,6 @@
  prefix=@prefix@
  exec_prefix=@exec_prefix@
