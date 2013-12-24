@@ -2,20 +2,20 @@
 %define	libname	%mklibname gpg-error %{major}
 %define	devname	%mklibname gpg-error -d
 
-%bcond_without	uclibc
+%bcond_with	uclibc
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.10
-Release:	14
+Version:	1.12
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 # comment out to workaround abf issue
 #Source1:	%{SOURCE0}.sig
-Patch0:		libgpg-error-1.9-libdir.patch
-Patch1:		libgpg-error-1.10-pkgconfig.patch
+Patch0:		libgpg-error-1.12-libdir.patch
+Patch1:		libgpg-error-1.12-pkgconfig.patch
 BuildRequires:	gettext-devel
 %if %{with uclibc}
 BuildRequires:	uClibc-devel >= 0.9.33.2-15
