@@ -2,12 +2,12 @@
 %define	libname	%mklibname gpg-error %{major}
 %define	devname	%mklibname gpg-error -d
 
-%bcond_with	uclibc
+%bcond_without	uclibc
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	1.12
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
