@@ -1,5 +1,6 @@
 removed_sources:
   libgpg-error-1.10.tar.bz2: 95b324359627fbcb762487ab6091afbe59823b29
   libgpg-error-1.10.tar.bz2.sig: f4efcf87d45e1bdb7dccc433d716b4de4ed22576
-sources:
   libgpg-error-1.12.tar.bz2: 259f359cd1440b21840c3a78e852afd549c709b8
+sources:
+  libgpg-error-1.16.tar.bz2: 059c40a2b78c3ac2b4cbec0e0481faba5af332fe

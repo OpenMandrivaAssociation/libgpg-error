@@ -1,0 +1,23 @@
+--- libgpg-error-1.16/src/gpg-error-config.in.orig	2014-10-15 09:41:52.951207958 +0100
++++ libgpg-error-1.16/src/gpg-error-config.in	2014-10-15 09:42:38.682204588 +0100
+@@ -13,7 +13,6 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ includedir=@includedir@
+-libdir=@libdir@
+ isubdirafter="@GPG_ERROR_CONFIG_ISUBDIRAFTER@"
+ 
+ output=""
+@@ -77,12 +76,6 @@
+             fi
+ 	    ;;
+ 	--libs)
+-	    case "$libdir" in
+-		/usr/lib|/usr/lib64|/lib|/lib64) ;;
+-		*)
+-		    output="$output -L$libdir"
+-		    ;;
+-	    esac
+ 	    output="$output @GPG_ERROR_CONFIG_LIBS@"
+             if test $mt = yes ; then
+                 output="$output @GPG_ERROR_CONFIG_MT_LIBS@"

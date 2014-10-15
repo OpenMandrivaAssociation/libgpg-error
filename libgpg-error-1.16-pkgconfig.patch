@@ -24,9 +24,9 @@ diff -Naur libgpg-error-1.12.orig/src/gpg-error.pc.in libgpg-error-1.12/src/gpg-
 +Libs: -L{libdir} -lgpg-error
 +Cflags: -I${includedir}
 diff -Naur libgpg-error-1.12.orig/src/Makefile.am libgpg-error-1.12/src/Makefile.am
---- libgpg-error-1.12.orig/src/Makefile.am	2013-12-24 07:07:30.108500334 -0500
-+++ libgpg-error-1.12/src/Makefile.am	2013-12-24 07:10:23.274502314 -0500
-@@ -37,13 +37,15 @@
+--- libgpg-error-1.16/src/Makefile.am.orig	2014-10-15 09:38:48.078221578 +0100
++++ libgpg-error-1.16/src/Makefile.am	2014-10-15 09:39:26.510218746 +0100
+@@ -72,13 +72,15 @@
  bin_SCRIPTS = gpg-error-config
  m4datadir = $(datadir)/aclocal
  m4data_DATA = gpg-error.m4
@@ -36,10 +36,10 @@ diff -Naur libgpg-error-1.12.orig/src/Makefile.am libgpg-error-1.12/src/Makefile
  EXTRA_DIST = mkstrtable.awk err-sources.h.in err-codes.h.in \
  	mkerrnos.awk errnos.in README \
  	mkerrcodes.awk mkerrcodes1.awk mkerrcodes2.awk mkerrcodes.c \
- 	mkheader.awk gpg-error.h.in mkw32errmap.c w32-add.h w32ce-add.h \
+ 	mkheader.c gpg-error.h.in mkw32errmap.c w32-add.h w32ce-add.h \
  	err-sources.h err-codes.h gpg-error-config.in gpg-error.m4 \
--	gpg-error.def.in versioninfo.rc.in
-+	gpg-error.def.in versioninfo.rc.in gpg-error.pc.in
+-	gpg-error.vers gpg-error.def.in versioninfo.rc.in \
++	gpg-error.vers gpg-error.def.in versioninfo.rc.in gpg-error.pc.in \
+ 	$(lock_obj_pub)
  
  BUILT_SOURCES = err-sources.h err-codes.h code-to-errno.h code-from-errno.h \
- 	err-sources-sym.h err-codes-sym.h errnos-sym.h gpg-error.h \

@@ -6,16 +6,16 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.12
-Release:	4
+Version:	1.16
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 # comment out to workaround abf issue
 #Source1:	%{SOURCE0}.sig
-Patch0:		libgpg-error-1.12-libdir.patch
-Patch1:		libgpg-error-1.12-pkgconfig.patch
+Patch0:		libgpg-error-1.16-libdir.patch
+Patch1:		libgpg-error-1.16-pkgconfig.patch
 BuildRequires:	gettext-devel
 %if %{with uclibc}
 BuildRequires:	uClibc-devel >= 0.9.33.2-15
