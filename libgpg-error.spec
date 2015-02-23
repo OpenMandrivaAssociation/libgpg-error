@@ -6,8 +6,8 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.16
-Release:	2
+Version:	1.18
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
@@ -46,6 +46,7 @@ This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
 
+%if %{with uclibc}
 %package -n	uclibc-%{libname}
 Summary:	Library containing common error values for GnuPG components (uClibc build)
 Group:		System/Libraries
@@ -54,6 +55,7 @@ Group:		System/Libraries
 This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
+%endif
 
 %package -n	%{devname}
 Summary:	Development related files of %{name}
@@ -87,7 +89,7 @@ popd
 
 mkdir -p system
 pushd system
-%configure2_5x
+%configure
 %make
 popd
 
