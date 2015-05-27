@@ -1,12 +1,12 @@
-%define	major	0
-%define	libname	%mklibname gpg-error %{major}
-%define	devname	%mklibname gpg-error -d
+%define major 0
+%define libname %mklibname gpg-error %{major}
+%define devname %mklibname gpg-error -d
 
-%bcond_without	uclibc
+%bcond_without uclibc
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.18
+Version:	1.19
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
