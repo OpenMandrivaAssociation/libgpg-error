@@ -15,7 +15,7 @@ Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 # comment out to workaround abf issue
 #Source1:	%{SOURCE0}.sig
 Patch0:		libgpg-error-1.16-libdir.patch
-Patch1:		libgpg-error-1.16-pkgconfig.patch
+Patch1:		libgpg-error-1.19-pkgconfig.patch
 BuildRequires:	gettext-devel
 %if %{with uclibc}
 BuildRequires:	uClibc-devel >= 0.9.33.2-15
