@@ -7,18 +7,20 @@
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	1.19
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 # comment out to workaround abf issue
 #Source1:	%{SOURCE0}.sig
+Source2:	%{name}.rpmlintrc
 Patch0:		libgpg-error-1.16-libdir.patch
 Patch1:		libgpg-error-1.19-pkgconfig.patch
 BuildRequires:	gettext-devel
 %if %{with uclibc}
 BuildRequires:	uClibc-devel >= 0.9.33.2-15
+BuildRequires:	uclibc-gettext-devel
 %endif
 
 %description
@@ -55,6 +57,18 @@ Group:		System/Libraries
 This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
+
+%package -n	uclibc-%{devname}
+Summary:	Development related files of %{name}
+Group:		Development/Other
+Provides:	uclibc-%{name}-devel = %{version}-%{release}
+Requires:	%{devname} = %{version}-%{release}
+Requires:	uclibc-%{libname} = %{version}-%{release}
+Conflicts:	%{devname} < 1.19-2
+
+%description -n	uclibc-%{devname}
+This package contains headers and other necessary files to develop 
+or compile applications that use %{name}.
 %endif
 
 %package -n	%{devname}
@@ -62,9 +76,6 @@ Summary:	Development related files of %{name}
 Group:		Development/Other
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
-%if %{with uclibc}
-Requires:	uclibc-%{libname} = %{version}-%{release}
-%endif
 
 %description -n	%{devname}
 This package contains headers and other necessary files to develop 
@@ -127,6 +138,9 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %if %{with uclibc}
 %files -n uclibc-%{libname}
 %{uclibc_root}/%{_lib}/libgpg-error.so.%{major}*
+
+%files -n uclibc-%{devname}
+%{uclibc_root}%{_libdir}/libgpg-error.so
 %endif
 
 %files -n %{devname}
@@ -136,9 +150,6 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %{_bindir}/gpg-error-config
 %{_datadir}/aclocal/gpg-error.m4
 %{_libdir}/libgpg-error.so
-%if %{with uclibc}
-%{uclibc_root}%{_libdir}/libgpg-error.so
-%endif
 %{_libdir}/pkgconfig/gpg-error.pc
 %{_includedir}/gpg-error.h
 %{_datadir}/common-lisp/source/gpg-error
