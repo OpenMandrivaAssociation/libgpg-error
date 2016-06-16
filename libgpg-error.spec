@@ -6,7 +6,7 @@
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	1.22
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
@@ -55,6 +55,8 @@ or compile applications that use %{name}.
 %package -n	%{staticname}
 Summary:	Library files needed for linking statically to %name
 Group:		Development/C
+Provides:	gpg-error-static-devel = %{EVRD}
+Provides:	libgpg-error-static-devel = %{EVRD}
 Requires:	%devname = %EVRD
 
 %description -n %{staticname}
