@@ -5,7 +5,7 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.25
+Version:	1.26
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -109,6 +109,7 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %{_libdir}/pkgconfig/gpg-error.pc
 %{_includedir}/gpg-error.h
 %{_datadir}/common-lisp/source/gpg-error
+%{_datadir}/%{name}/errorref.txt
 
 %files -n %staticname
 %_libdir/*.a
