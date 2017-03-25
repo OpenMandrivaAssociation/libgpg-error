@@ -5,14 +5,12 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.26
+Version:	1.27
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
-# comment out to workaround abf issue
-#Source1:	%{SOURCE0}.sig
 Source2:	%{name}.rpmlintrc
 Patch0:		libgpg-error-1.16-libdir.patch
 Patch1:		libgpg-error-1.19-pkgconfig.patch
@@ -53,36 +51,28 @@ This package contains headers and other necessary files to develop
 or compile applications that use %{name}.
 
 %package -n	%{staticname}
-Summary:	Library files needed for linking statically to %name
+Summary:	Library files needed for linking statically to %{name}
 Group:		Development/C
 Provides:	gpg-error-static-devel = %{EVRD}
 Provides:	libgpg-error-static-devel = %{EVRD}
-Requires:	%devname = %EVRD
+Requires:	%{devname} = %{EVRD}
 
 %description -n %{staticname}
-Library files needed for linking statically to %name
+Library files needed for linking statically to %{name}
 
 %prep
 %setup -q
 %apply_patches
 
 %build
-#fix build with new automake
-sed -i -e 's,AM_PROG_MKDIR_P,AC_PROG_MKDIR_P,g' configure.*
-autoreconf -fi
-CONFIGURE_TOP="$PWD"
-
-mkdir -p system
-pushd system
 %configure --enable-static
 %make
-popd
 
 %check
-make -C system check
+make check
 
 %install
-%makeinstall_std -C system
+%makeinstall_std
 
 mkdir -p %{buildroot}/%{_lib}
 mv %{buildroot}%{_libdir}/libgpg-error.so.%{major}* %{buildroot}/%{_lib}
@@ -100,7 +90,7 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 /%{_lib}/libgpg-error.so.%{major}*
 
 %files -n %{devname}
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %{multiarch_bindir}/gpg-error-config
 %{_bindir}/gpg-error
 %{_bindir}/gpg-error-config
@@ -111,5 +101,5 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %{_datadir}/common-lisp/source/gpg-error
 %{_datadir}/%{name}/errorref.txt
 
-%files -n %staticname
+%files -n %{staticname}
 %_libdir/*.a
