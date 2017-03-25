@@ -98,6 +98,7 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %{_libdir}/libgpg-error.so
 %{_libdir}/pkgconfig/gpg-error.pc
 %{_includedir}/gpg-error.h
+%{_includedir}/gpgrt.h
 %{_datadir}/common-lisp/source/gpg-error
 %{_datadir}/%{name}/errorref.txt
 
