@@ -5,7 +5,7 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.27
+Version:	1.29
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -21,36 +21,36 @@ This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
 
-%package	common
+%package common
 Summary:	Common files for libgpg-error
 Group:		System/Libraries
 BuildArch:	noarch
 Conflicts:	libgpg-error < 1.7
 
-%description	common
+%description common
 This package contains the common files that are used by the
 libgpg-error library.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Library containing common error values for GnuPG components
 Group:		System/Libraries
 
-%description -n	%{libname}
+%description -n %{libname}
 This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
 
-%package -n	%{devname}
+%package -n %{devname}
 Summary:	Development related files of %{name}
 Group:		Development/Other
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 
-%description -n	%{devname}
+%description -n %{devname}
 This package contains headers and other necessary files to develop 
 or compile applications that use %{name}.
 
-%package -n	%{staticname}
+%package -n %{staticname}
 Summary:	Library files needed for linking statically to %{name}
 Group:		Development/C
 Provides:	gpg-error-static-devel = %{EVRD}
@@ -78,7 +78,9 @@ mkdir -p %{buildroot}/%{_lib}
 mv %{buildroot}%{_libdir}/libgpg-error.so.%{major}* %{buildroot}/%{_lib}
 ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}/libgpg-error.so
 
+%if %{mdvver} <= 3000000
 %multiarch_binaries %{buildroot}%{_bindir}/gpg-error-config
+%endif
 
 %find_lang %{name}
 
@@ -91,9 +93,13 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 
 %files -n %{devname}
 %doc AUTHORS NEWS README
+%if %{mdvver} <= 3000000
 %{multiarch_bindir}/gpg-error-config
+%endif
 %{_bindir}/gpg-error
 %{_bindir}/gpg-error-config
+%{_bindir}/gpgrt-config
+%{_bindir}/yat2m
 %{_datadir}/aclocal/gpg-error.m4
 %{_libdir}/libgpg-error.so
 %{_libdir}/pkgconfig/gpg-error.pc
@@ -101,6 +107,7 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %{_includedir}/gpgrt.h
 %{_datadir}/common-lisp/source/gpg-error
 %{_datadir}/%{name}/errorref.txt
+%{_datadir}/aclocal/gpgrt.m4
 
 %files -n %{staticname}
-%_libdir/*.a
+%{_libdir}/*.a
