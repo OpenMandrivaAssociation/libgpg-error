@@ -78,6 +78,10 @@ mkdir -p %{buildroot}/%{_lib}
 mv %{buildroot}%{_libdir}/libgpg-error.so.%{major}* %{buildroot}/%{_lib}
 ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}/libgpg-error.so
 
+%if %{mdvver} <= 3000000
+%multiarch_binaries %{buildroot}%{_bindir}/gpg-error-config
+%endif
+
 %find_lang %{name}
 
 %files common -f %{name}.lang
@@ -89,6 +93,9 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 
 %files -n %{devname}
 %doc AUTHORS NEWS README
+%if %{mdvver} <= 3000000
+%{multiarch_bindir}/gpg-error-config
+%endif
 %{_bindir}/gpg-error
 %{_bindir}/gpg-error-config
 %{_bindir}/gpgrt-config
