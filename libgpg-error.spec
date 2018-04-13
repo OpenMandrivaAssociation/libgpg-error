@@ -91,6 +91,8 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %doc AUTHORS NEWS README
 %{_bindir}/gpg-error
 %{_bindir}/gpg-error-config
+%{_bindir}/gpgrt-config
+%{_bindir}/yat2m
 %{_datadir}/aclocal/gpg-error.m4
 %{_libdir}/libgpg-error.so
 %{_libdir}/pkgconfig/gpg-error.pc
@@ -98,6 +100,7 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 %{_includedir}/gpgrt.h
 %{_datadir}/common-lisp/source/gpg-error
 %{_datadir}/%{name}/errorref.txt
+%{_datadir}/aclocal/gpgrt.m4
 
 %files -n %{staticname}
-%_libdir/*.a
+%{_libdir}/*.a
