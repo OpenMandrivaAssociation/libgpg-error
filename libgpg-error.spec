@@ -21,36 +21,36 @@ This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
 
-%package	common
+%package common
 Summary:	Common files for libgpg-error
 Group:		System/Libraries
 BuildArch:	noarch
 Conflicts:	libgpg-error < 1.7
 
-%description	common
+%description common
 This package contains the common files that are used by the
 libgpg-error library.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Library containing common error values for GnuPG components
 Group:		System/Libraries
 
-%description -n	%{libname}
+%description -n %{libname}
 This is a library that defines common error values for all GnuPG
 components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon and possibly more in the future.
 
-%package -n	%{devname}
+%package -n %{devname}
 Summary:	Development related files of %{name}
 Group:		Development/Other
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 
-%description -n	%{devname}
+%description -n %{devname}
 This package contains headers and other necessary files to develop 
 or compile applications that use %{name}.
 
-%package -n	%{staticname}
+%package -n %{staticname}
 Summary:	Library files needed for linking statically to %{name}
 Group:		Development/C
 Provides:	gpg-error-static-devel = %{EVRD}
