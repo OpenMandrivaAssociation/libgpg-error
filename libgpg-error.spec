@@ -13,6 +13,10 @@ Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source2:	%{name}.rpmlintrc
 BuildRequires:	gettext-devel
+BuildRequires:	termcap-devel
+BuildRequires:	pkgconfig(ncursesw)
+BuildRequires:	pkgconfig(readline)
+BuildRequires:	hostname
 
 %description
 This is a library that defines common error values for all GnuPG
@@ -83,7 +87,6 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 
 %files common -f %{name}.lang
 %{_datadir}/info/gpgrt.info.*
-%{_mandir}/man1/gpg-error-config.1.*
 
 %files -n %{libname}
 /%{_lib}/libgpg-error.so.%{major}*
