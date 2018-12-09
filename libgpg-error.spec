@@ -5,8 +5,8 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.32
-Release:	3
+Version:	1.33
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
@@ -61,18 +61,17 @@ Requires:	%{devname} = %{EVRD}
 Library files needed for linking statically to %{name}
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 %configure --enable-static
-%make
+%make_nuild
 
 %check
 make check
 
 %install
-%makeinstall_std
+%make_install
 
 mkdir -p %{buildroot}/%{_lib}
 mv %{buildroot}%{_libdir}/libgpg-error.so.%{major}* %{buildroot}/%{_lib}
