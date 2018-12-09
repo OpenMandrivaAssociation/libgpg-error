@@ -63,7 +63,7 @@ Library files needed for linking statically to %{name}
 
 %build
 %configure --enable-static
-%make_nuild
+%make_build
 
 %check
 make check
