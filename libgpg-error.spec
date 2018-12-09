@@ -12,8 +12,6 @@ Group:		System/Libraries
 Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source2:	%{name}.rpmlintrc
-Patch0:		libgpg-error-1.16-libdir.patch
-Patch1:		libgpg-error-1.19-pkgconfig.patch
 BuildRequires:	gettext-devel
 
 %description
