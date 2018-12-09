@@ -13,7 +13,6 @@ Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source2:	%{name}.rpmlintrc
 BuildRequires:	gettext-devel
-BuildRequires:	termcap-devel
 BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	hostname
