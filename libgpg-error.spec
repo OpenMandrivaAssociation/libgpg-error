@@ -86,6 +86,7 @@ ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}
 
 %files common -f %{name}.lang
 %{_datadir}/info/gpgrt.info.*
+%{_mandir}/man1/gpgrt-config.1*
 
 %files -n %{libname}
 /%{_lib}/libgpg-error.so.%{major}*
