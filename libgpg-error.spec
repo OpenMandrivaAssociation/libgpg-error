@@ -5,7 +5,7 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.33
+Version:	1.34
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
