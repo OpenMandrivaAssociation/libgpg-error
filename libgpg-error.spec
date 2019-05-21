@@ -6,12 +6,13 @@
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	1.36
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source2:	%{name}.rpmlintrc
+Patch0:	fix-build-with-gawk.patch
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	pkgconfig(readline)
