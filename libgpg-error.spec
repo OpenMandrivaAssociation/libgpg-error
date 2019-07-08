@@ -6,7 +6,7 @@
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	1.36
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
@@ -64,6 +64,7 @@ Library files needed for linking statically to %{name}
 
 %prep
 %autosetup -p1
+%config_update
 
 %build
 %configure --enable-static
