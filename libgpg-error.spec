@@ -20,7 +20,7 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.42
+Version:	1.43
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -110,7 +110,7 @@ Library files needed for linking statically to %{name}
 %autosetup -p1
 %config_update
 
-export CONFIGURE_TOP="`pwd`"
+export CONFIGURE_TOP="$(pwd)"
 %if %{with compat32}
 mkdir build32
 cd build32
@@ -139,18 +139,14 @@ make check -C build
 %endif
 %make_install -C build
 
-mkdir -p %{buildroot}/%{_lib}
-mv %{buildroot}%{_libdir}/libgpg-error.so.%{major}* %{buildroot}/%{_lib}
-ln -srf %{buildroot}/%{_lib}/libgpg-error.so.%{major}.*.* %{buildroot}%{_libdir}/libgpg-error.so
-
 %find_lang %{name}
 
 %files common -f %{name}.lang
 %{_datadir}/info/gpgrt.info.*
-%{_mandir}/man1/gpgrt-config.1*
+%doc %{_mandir}/man1/gpgrt-config.1*
 
 %files -n %{libname}
-/%{_lib}/libgpg-error.so.%{major}*
+%{_libdir}/libgpg-error.so.%{major}*
 
 %files -n %{devname}
 %doc AUTHORS NEWS README
