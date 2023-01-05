@@ -20,8 +20,8 @@
 
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
-Version:	1.45
-Release:	2
+Version:	1.46
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
@@ -173,7 +173,6 @@ done
 
 %files common -f %{name}.lang
 %{_datadir}/info/gpgrt.info.*
-%doc %{_mandir}/man1/gpgrt-config.1*
 
 %files -n %{libname}
 %{_libdir}/libgpg-error.so.%{major}*
@@ -181,7 +180,6 @@ done
 %files -n %{devname}
 %doc AUTHORS NEWS README
 %{_bindir}/gpg-error
-%{_bindir}/gpg-error-config
 %{_bindir}/gpgrt-config
 %{_bindir}/yat2m
 %{_datadir}/aclocal/gpg-error.m4
