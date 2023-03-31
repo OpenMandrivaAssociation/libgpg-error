@@ -21,7 +21,7 @@
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	1.46
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
