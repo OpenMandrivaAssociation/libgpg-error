@@ -127,11 +127,13 @@ cd build
 %endif
 %make_build -C build
 
+%if ! %{cross_compiling}
 %check
 %if %{with compat32}
 make check -C build32
 %endif
 make check -C build
+%endif
 
 %install
 %if %{with compat32}
