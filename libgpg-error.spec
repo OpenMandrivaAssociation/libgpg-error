@@ -19,7 +19,7 @@
 Summary:	Library containing common error values for GnuPG components
 Name:		libgpg-error
 Version:	1.47
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
@@ -41,7 +41,6 @@ pinentry, SmartCard Daemon and possibly more in the future.
 %package common
 Summary:	Common files for libgpg-error
 Group:		System/Libraries
-BuildArch:	noarch
 Conflicts:	libgpg-error < 1.7
 
 %description common
@@ -51,6 +50,7 @@ libgpg-error library.
 %package -n %{libname}
 Summary:	Library containing common error values for GnuPG components
 Group:		System/Libraries
+Requires(meta):	%{name}-common
 
 %description -n %{libname}
 This is a library that defines common error values for all GnuPG
@@ -117,7 +117,9 @@ cd ..
 %endif
 mkdir build
 cd build
-%configure --enable-static
+%configure \
+	--enable-static \
+	--enable-install-gpg-error-config
 
 %build
 %if %{with compat32}
@@ -172,15 +174,16 @@ for i in $(find %{buildroot} -type f -name "*.[ao]"); do
 done
 
 %files common -f %{name}.lang
-%doc %{_infodir}/gpgrt.info.*
-%doc %{_mandir}/man1/gpgrt-config.1.zst
+%{_bindir}/gpg-error
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/errorref.txt
 
 %files -n %{libname}
 %{_libdir}/libgpg-error.so.%{major}*
 
 %files -n %{devname}
 %doc AUTHORS NEWS README
-%{_bindir}/gpg-error
+%{_bindir}/gpg-error-config
 %{_bindir}/gpgrt-config
 %{_bindir}/yat2m
 %{_datadir}/aclocal/gpg-error.m4
@@ -189,8 +192,10 @@ done
 %{_includedir}/gpg-error.h
 %{_includedir}/gpgrt.h
 %{_datadir}/common-lisp/source/gpg-error
-%{_datadir}/%{name}/errorref.txt
 %{_datadir}/aclocal/gpgrt.m4
+%doc %{_infodir}/gpgrt.info.*
+%doc %{_mandir}/man1/gpgrt-config.1*
+%doc %{_mandir}/man1/gpg-error-config.1*
 
 %files -n %{staticname}
 %{_libdir}/*.a
