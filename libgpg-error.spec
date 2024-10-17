@@ -22,7 +22,7 @@ Version:	1.50
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://www.gnupg.org/
+Url:		https://www.gnupg.org/
 Source0:	https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-%{version}.tar.bz2
 Source2:	%{name}.rpmlintrc
 BuildRequires:	gettext-devel
