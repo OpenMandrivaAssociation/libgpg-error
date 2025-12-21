@@ -25,6 +25,11 @@ Group:		System/Libraries
 Url:		https://www.gnupg.org/
 Source0:	https://www.gnupg.org/ftp/gcrypt/gpgrt/libgpg-error-%{version}.tar.bz2
 Source2:	%{name}.rpmlintrc
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	pkgconfig(readline)
